@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 
 class BookController extends Controller
 {
@@ -11,9 +12,10 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Book $book)
     {
-        return view('books/list', ['booksList' => "Tu będzie lista książek"]);
+        $booksList = $book->all();
+        return view('books/list', ['booksList' => $booksList]);
     }
 
     /**
